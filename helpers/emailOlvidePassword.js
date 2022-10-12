@@ -1,6 +1,6 @@
 import sgMail from '@sendgrid/mail'
 
-const emailRegistro = async (datos) => {
+const emailolvidePassword = async (datos) => {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
     const { email, nombre, token } = datos
     const msg = {
