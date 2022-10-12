@@ -1,19 +1,19 @@
 import sgMail from '@sendgrid/mail'
 
-const emailolvidePassword = async (datos) => {
+const emailRegistro = async (datos) => {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
     const { email, nombre, token } = datos
     const msg = {
         to: email,
         from: 'matusleonc@outlook.com',
-        subject: 'Comprueba tu cuenta en APV',
+        subject: 'Reestablece tu Password',
+        text: 'Reestablece tu Password',
         html: `
-            <p>Hola ${nombre}, comprueba tu cuenta en APV </p>
-            <p> Tu cuenta ya esta lista, solo debes comprobarla en el siguiente enlace: 
-            <a href='${process.env.FRONTEND_URL}/confirmar/${token}'>Comprobar Cuenta </a> </p>
-            <p> Si tu no creaste esta cuenta, puedes ignorar este mensaje </p>
+            <p>Hola ${nombre}, has solicitado reestablecer tu password </p>
+            <p> Sigue el siguiente enlace para generar un nuevo password: 
+            <a href='${process.env.FRONTEND_URL}/olvide-password/${token}'>Reestablecer Password </a> </p>
+            <p> Si tu no pediste reestablecer tu contraseña, puedes ignorar este mensaje </p>
         `
-
     }
 
     sgMail.send(msg)
